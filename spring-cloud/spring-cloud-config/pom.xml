@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.symulakr.sqs.spring-cloud</groupId>
-    <artifactId>spring-cloud-sonfig</artifactId>
+    <artifactId>cloud-config</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
