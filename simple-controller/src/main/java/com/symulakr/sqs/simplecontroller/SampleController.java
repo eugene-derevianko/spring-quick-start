@@ -34,6 +34,16 @@ public class SampleController {
         return new ResponseEntity<>("", HttpStatus.OK);
     }
 
+    @PostMapping("/error")
+    @ResponseBody
+    public ResponseEntity<String> callbackFail(HttpServletRequest request,
+                                           @RequestParam Map<String, Object> params) throws IOException {
+        log.info("POST: to Fail");
+        log.info("Headers: {}", getHeadersInfo(request));
+        log.info("Params: {}", params);
+        return new ResponseEntity<>("", HttpStatus.OK);
+    }
+
     @GetMapping("/")
     @ResponseBody
     public ResponseEntity<String> get(HttpServletRequest request,
