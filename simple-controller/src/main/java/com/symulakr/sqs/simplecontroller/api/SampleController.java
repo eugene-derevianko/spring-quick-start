@@ -1,9 +1,6 @@
-package com.symulakr.sqs.simplecontroller;
+package com.symulakr.sqs.simplecontroller.api;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +18,6 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
-@EnableAutoConfiguration
 public class SampleController {
 
     @PostMapping("/")
@@ -31,7 +27,7 @@ public class SampleController {
         log.info("POST:");
         log.info("Headers: {}", getHeadersInfo(request));
         log.info("Params: {}", params);
-        return new ResponseEntity<>("", HttpStatus.OK);
+        return ResponseEntity.ok("ok");
     }
 
     @PostMapping("/error")
@@ -41,7 +37,7 @@ public class SampleController {
         log.info("POST: to Fail");
         log.info("Headers: {}", getHeadersInfo(request));
         log.info("Params: {}", params);
-        return new ResponseEntity<>("", HttpStatus.OK);
+        return ResponseEntity.ok("ok");
     }
 
     @GetMapping("/")
@@ -52,11 +48,7 @@ public class SampleController {
         log.info("GET:");
         log.info("Request: {}", body);
         log.info("Params: {}", params);
-        return new ResponseEntity<>("", HttpStatus.OK);
-    }
-
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(SampleController.class, args);
+        return ResponseEntity.ok("ok");
     }
 
     private Map<String, String> getHeadersInfo(HttpServletRequest request) {
@@ -69,7 +61,6 @@ public class SampleController {
             String value = request.getHeader(key);
             map.put(key, value);
         }
-
         return map;
     }
 }
